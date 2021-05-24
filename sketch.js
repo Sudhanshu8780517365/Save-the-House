@@ -32,7 +32,7 @@ function draw() {
    player.visible=true;                  
    house.visible=true;
    ground.visible=true;  
-   if(keyDown("space")){
+   if(keyDown("space")&&enGroup.x<windowWidth){
    bullet=createSprite(player.x,player.y,20,20)
    bullet.addImage(bulletIMG)
    bullet.scale=0.025
