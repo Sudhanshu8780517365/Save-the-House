@@ -40,22 +40,27 @@ function draw() {
    bulletGroup.add(bullet)
   }
   if(frameCount%50===0){
-  en=createSprite(random(windowWidth,windowWidth*2),height/4*2.8)
-   en.velocityX=-5
-   en.addAnimation("walking",enAnime)
-   en.scale=random(0.3,0.6)
-   enGroup.add(en)
-  }
+  en=createSprite(random(windowWidth,windowWidth*2),height/4*2.8);
+   en.velocityX=-5;
+   en.addAnimation("walking",enAnime);
+   en.scale=random(0.3,0.6);
+   if(en.collide(bulletGroup)){
+    en.destroy()
+   }
+   enGroup.add(en);
+   }
   if(bulletGroup.collide(rod)){
    bulletGroup[0].destroy();
-  }
-  if(bulletGroup.collide(enGroup)){
-   enGroup[0].destroy();
-   bulletGroup.destroyEach();
    score+=1;
   }
+//  if(bulletGroup.collide(enGroup)){
+  // enGroup[0].destroy();
+//   bulletGroup.destroyEach();
+  // score+=1;
+ // }
   
   }
+  textSize(50);
   stroke("black")
   fill("black")
   text("Score = "+score,windowWidth/4,height/4);
